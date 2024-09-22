@@ -1,5 +1,8 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:ticket_app/core/presentation/home/home_page.dart';
+import 'package:ticket_app/core/presentation/search_page.dart';
+import 'package:ticket_app/core/presentation/tickets/ticket_page.dart';
 
 class NavBottomBar extends StatefulWidget {
   const NavBottomBar({super.key});
@@ -10,9 +13,9 @@ class NavBottomBar extends StatefulWidget {
 
 class _NavBottomBarState extends State<NavBottomBar> {
   final navItems = [
-    const Center(child: Text("Home")),
-    const Center(child: Text("Search")),
-    const Center(child: Text("Tickets")),
+    const HomePage(),
+    const SearchPage(),
+    const TicketPage(),
     const Center(child: Text("Account")),
   ];
 
@@ -27,9 +30,6 @@ class _NavBottomBarState extends State<NavBottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("My tickets"),
-      ),
       body: navItems[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
