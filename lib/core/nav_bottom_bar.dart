@@ -1,8 +1,9 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:ticket_app/core/presentation/account/account_page.dart';
 import 'package:ticket_app/core/presentation/home/home_page.dart';
-import 'package:ticket_app/core/presentation/search_page.dart';
-import 'package:ticket_app/core/presentation/tickets/ticket_page.dart';
+import 'package:ticket_app/core/presentation/search/search_page.dart';
+import 'package:ticket_app/core/presentation/tickets/ticket_details_page.dart';
 
 class NavBottomBar extends StatefulWidget {
   const NavBottomBar({super.key});
@@ -15,8 +16,8 @@ class _NavBottomBarState extends State<NavBottomBar> {
   final navItems = [
     const HomePage(),
     const SearchPage(),
-    const TicketPage(),
-    const Center(child: Text("Account")),
+    const TicketDetailPage(),
+    const AccountPage(),
   ];
 
   int _selectedIndex = 0;

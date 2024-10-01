@@ -24,6 +24,6 @@ class Styles {
     height: 20,
   );
 
-  static Color ticketUpperColor = const Color(0xFF526799);
-  static Color ticketBottomColor = Colors.redAccent.shade100;
+  static Color ticketUpperColor = const Color(0xfcBC242C);
+  static Color ticketBottomColor = const Color(0xfc015E32);
 }

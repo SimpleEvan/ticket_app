@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../styles/app_styles.dart';
 
-class HotelPage extends StatelessWidget {
+class HotelWidget extends StatelessWidget {
   final Map<String, dynamic> hotel;
-  const HotelPage({super.key, required this.hotel});
+  final Color backgroundColor;
+
+  const HotelWidget(
+      {super.key, required this.hotel, required this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class HotelPage extends StatelessWidget {
       height: 350,
       margin: const EdgeInsets.only(right: 16),
       decoration: BoxDecoration(
-        color: Styles.primaryColor,
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(18),
       ),
       child: Column(
@@ -24,7 +27,7 @@ class HotelPage extends StatelessWidget {
           Container(
             height: 160,
             decoration: BoxDecoration(
-                color: Styles.primaryColor,
+                color: backgroundColor,
                 borderRadius: BorderRadius.circular(12),
                 image: DecorationImage(
                     image: AssetImage("assets/images/${hotel['image']}"),

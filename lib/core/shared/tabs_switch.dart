@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TabsSwitch extends StatelessWidget {
-  const TabsSwitch({super.key});
+  final String leftText;
+  final String rightText;
+  const TabsSwitch(
+      {super.key, required this.leftText, required this.rightText});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class TabsSwitch extends StatelessWidget {
                     BorderRadius.horizontal(left: Radius.circular(50))),
             padding: const EdgeInsets.symmetric(vertical: 7),
             width: size.width * .44,
-            child: const Center(child: Text("Airline Tickets")),
+            child: Center(child: Text(leftText)),
           ),
           Container(
             decoration: const BoxDecoration(
@@ -28,7 +31,7 @@ class TabsSwitch extends StatelessWidget {
                     BorderRadius.horizontal(right: Radius.circular(50))),
             padding: const EdgeInsets.symmetric(vertical: 7),
             width: size.width * .44,
-            child: const Center(child: Text("Hotels")),
+            child: Center(child: Text(rightText)),
           )
         ],
       ),

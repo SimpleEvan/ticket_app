@@ -1,8 +1,10 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:ticket_app/core/infra/routes.dart';
 import 'package:ticket_app/core/presentation/home/hotel_widget.dart';
 import 'package:ticket_app/core/presentation/home/ticket_widget.dart';
 import 'package:ticket_app/core/shared/label_text_link_widget.dart';
+import 'package:ticket_app/core/styles/custom_themes.dart';
 
 import '../../../data/json.dart';
 import '../../styles/app_styles.dart';
@@ -10,6 +12,13 @@ import '../../styles/media.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
+  Color setBackgroundColor(int index) {
+    if (index % 2 == 0) {
+      return const Color(0xfcBC242C).withOpacity(0.75);
+    }
+    return const Color(0xfc015E32).withOpacity(0.75);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +51,18 @@ class HomePage extends StatelessWidget {
                         )
                       ],
                     ),
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: const DecorationImage(
-                              image: AssetImage(Media.logo))),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routes.accountPage);
+                      },
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: const DecorationImage(
+                                image: AssetImage(Media.logo))),
+                      ),
                     ),
                   ],
                 ),
@@ -73,7 +87,7 @@ class HomePage extends StatelessWidget {
                 const CustomLabelTextLink(
                   label: 'Upcoming Flights',
                   linkText: 'View all',
-                  route: "/tickets_page",
+                  route: Routes.ticketsPage,
                 ),
                 Styles.smallHeightSpacing,
                 SingleChildScrollView(
@@ -82,21 +96,25 @@ class HomePage extends StatelessWidget {
                       children: tickets
                           .map((item) => TicketWidget(
                                 ticket: item,
+                                theme: MoroccanTheme(),
                               ))
                           .toList(),
                     )),
                 Styles.defaultHeightSpacing,
                 const CustomLabelTextLink(
-                  label: 'Hotels',
+                  label: 'Places',
                   linkText: 'View all',
-                  route: "/hotel_page",
+                  route: Routes.hotelsPage,
                 ),
                 Styles.smallHeightSpacing,
                 SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: hotels
-                          .map((hotel) => HotelPage(hotel: hotel))
+                          .map((hotel) => HotelWidget(
+                              hotel: hotel,
+                              backgroundColor:
+                                  setBackgroundColor(hotels.indexOf(hotel))))
                           .toList(),
                     ))
               ],
